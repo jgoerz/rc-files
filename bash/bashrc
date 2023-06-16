@@ -1,0 +1,33 @@
+# Do this so my executables are first, then what's in macports, then everything
+# else
+export PATH=${HOME}/bin:/opt/local/bin:${PATH}
+
+# https://ss64.com/bash/syntax-prompt.html
+export PS1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
+
+# To find the file: find / -name 'git-prompt.sh' -type f -print -quit 2>/dev/null
+# https://stackoverflow.com/questions/15883416/adding-git-branch-on-the-bash-command-prompt#24716445
+if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+	. /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+fi
+
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+	source /usr/local/share/chruby/chruby.sh
+	RUBIES+=(
+		"$HOME/src/ruby-X.X.X"
+	)
+	# set default
+	chruby 2.7.4
+	source /usr/local/share/chruby/auto.sh
+
+	source /usr/local/share/gem_home/gem_home.sh
+fi
+
+
+if [ -f $HOME/.bash_aliases ]; then
+	. $HOME/.bash_aliases
+fi
+
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+	. /opt/local/etc/profile.d/bash_completion.sh
+fi 
