@@ -1,2 +1,3 @@
 alias ll='ls -l'
 alias dc='docker-compose'
+alias gitg='git log --oneline --graph'

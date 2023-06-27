@@ -1,11 +1,11 @@
 # Do this so my executables are first, then what's in macports, then everything
-# else
-export PATH=${HOME}/bin:/opt/local/bin:${PATH}
+# else.  And we add in gnubin so we get the real unix utilities.
+# => sudo port install coreutils gsed
+export PATH=${HOME}/bin:/opt/local/libexec/gnubin/:/opt/local/bin:${PATH}
 
 # https://ss64.com/bash/syntax-prompt.html
 export PS1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
 
-# To find the file: find / -name 'git-prompt.sh' -type f -print -quit 2>/dev/null
 # https://stackoverflow.com/questions/15883416/adding-git-branch-on-the-bash-command-prompt#24716445
 if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
 	. /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
@@ -14,7 +14,7 @@ fi
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 	source /usr/local/share/chruby/chruby.sh
 	RUBIES+=(
-		"$HOME/src/ruby-X.X.X"
+		"$HOME/src/ruby-2.7.4"
 	)
 	# set default
 	chruby 2.7.4
@@ -31,3 +31,17 @@ fi
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
 	. /opt/local/etc/profile.d/bash_completion.sh
 fi 
+
+# Couldn't do this with aliases
+function tf() {
+	clear
+	echo "terraform $@"
+	terraform $@
+}
+
+# Add completion to terraform and my shell function shortcut
+# https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
+# use terraform -install-completion
+
+complete -C /opt/local/bin/terraform tf
+complete -C /opt/local/bin/terraform terraform
