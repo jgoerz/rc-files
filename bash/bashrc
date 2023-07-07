@@ -4,11 +4,13 @@
 export PATH=${HOME}/bin:/opt/local/libexec/gnubin/:/opt/local/bin:${PATH}
 
 # https://ss64.com/bash/syntax-prompt.html
-# export PS1='[\u@\h \w$(__git_ps1 " (%s)")]\$ '
+# => man terminfo and search for "These are the string capabilities:"
+# export PS1='[\e[0;36m\u@\h\e[0m \w$(__git_ps1 " (%s)")]\$ '
 cyan=$(tput setaf 6)
 green=$(tput setaf 2)
-export PS1='[\[${cyan}\]\u@\h\e[0m\] \w\[$green\]$(__git_ps1 " (%s)")\e[0m\]]\$ '
-# export PS1='[\e[0;36m\u@\h\e[0m] \w\e[0;32m$(__git_ps1 " (%s)")\e[0m\$ '
+reset=$(tput sgr0) # reset to default color, this was not the same as the URL shows
+export PS1='[\[${cyan}\]\u@\h\[${reset}\] \w\[$green\]$(__git_ps1 " (%s)")\[${reset}\]]\$ '
+
 
 # https://stackoverflow.com/questions/15883416/adding-git-branch-on-the-bash-command-prompt#24716445
 if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
