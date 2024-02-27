@@ -1,7 +1,7 @@
-# Do this so my executables are first, then what's in macports, then everything
-# else.  And we add in gnubin so we get the real unix utilities.
-# => sudo port install coreutils gsed
-export PATH=${HOME}/bin:/opt/local/libexec/gnubin/:/opt/local/bin:${PATH}
+export PATH="${HOME}/bin:${PATH}"                     # roll my own
+# export PATH="${HOME}/tools/flutter/bin:${PATH}"       # flutter
+export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"  # macports
+export PATH="/opt/local/libexec/gnubin/:${PATH}"      # gnu versions of coreutils
 
 # https://ss64.com/bash/syntax-prompt.html
 # => man terminfo and search for "These are the string capabilities:"
@@ -17,17 +17,17 @@ if [ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; 
 	. /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 fi
 
-if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-	source /usr/local/share/chruby/chruby.sh
-	RUBIES+=(
-		"$HOME/src/ruby-2.7.4"
-	)
-	# set default
-	chruby 2.7.4
-	source /usr/local/share/chruby/auto.sh
-
-	source /usr/local/share/gem_home/gem_home.sh
-fi
+#if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+#	source /usr/local/share/chruby/chruby.sh
+#	RUBIES+=(
+#		"$HOME/src/ruby-2.7.4"
+#	)
+#	# set default
+#	chruby 2.7.4
+#	source /usr/local/share/chruby/auto.sh
+#
+#	source /usr/local/share/gem_home/gem_home.sh
+#fi
 
 
 if [ -f $HOME/.bash_aliases ]; then
@@ -37,6 +37,16 @@ fi
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
 	. /opt/local/etc/profile.d/bash_completion.sh
 fi 
+
+if [ -f "${HOME}/.asdf/asdf.sh" ]; then
+	. "${HOME}/.asdf/asdf.sh"
+fi 
+
+if [ -f "${HOME}/.asdf/completions/asdf.bash" ]; then
+	. "${HOME}/.asdf/completions/asdf.bash"
+fi 
+
+export FLUTTER_ROOT="$(asdf where flutter)"
 
 # Couldn't do this with aliases
 function tf() {

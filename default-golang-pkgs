@@ -1,0 +1,24 @@
+//
+// https://go.googlesource.com/vscode-go/+/HEAD/docs/tools.md
+//
+
+// https://pkg.go.dev/golang.org/x/tools/gopls#section-readme
+golang.org/x/tools/gopls
+
+// https://go.googlesource.com/vscode-go/+/HEAD/docs/debugging.md
+github.com/go-delve/delve
+
+// https://pkg.go.dev/github.com/golang/vscode-go/vscgo
+github.com/golang/vscode-go/vscgo
+
+// https://pkg.go.dev/github.com/fatih/gomodifytags
+github.com/fatih/gomodifytags
+
+// https://github.com/josharian/impl
+github.com/josharian/impl
+
+// https://github.com/cweill/gotests/
+github.com/cweill/gotests/...
+
+// https://pkg.go.dev/honnef.co/go/tools/staticcheck
+honnef.co/go/tools/staticcheck
