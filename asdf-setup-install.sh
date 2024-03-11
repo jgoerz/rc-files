@@ -49,10 +49,6 @@ if [ -f "${HOME}/.asdf/completions/asdf.bash" ]; then
 . "$HOME/.asdf/completions/asdf.bash"
 fi
 
-if [ -f "${HOME}/.asdf/completions/asdf.bash" ]; then
-. "$HOME/.asdf/completions/asdf.bash"
-fi
-
 export FLUTTER_ROOT="$(asdf where flutter)"
 
 EOF
