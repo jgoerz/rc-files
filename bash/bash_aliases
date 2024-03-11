@@ -1,3 +1,4 @@
 alias ll='ls -l --color'
 alias dc='docker-compose'
 alias gitg='git log --oneline --graph'
+alias mp='multipass'

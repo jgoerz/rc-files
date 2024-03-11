@@ -2,6 +2,7 @@ export PATH="${HOME}/bin:${PATH}"                     # roll my own
 # export PATH="${HOME}/tools/flutter/bin:${PATH}"       # flutter
 export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"  # macports
 export PATH="/opt/local/libexec/gnubin/:${PATH}"      # gnu versions of coreutils
+export PATH=${HOME}/bin:/opt/local/libexec/gnubin:/opt/local/bin:${HOME}/go/bin:${PATH}
 
 # https://ss64.com/bash/syntax-prompt.html
 # => man terminfo and search for "These are the string capabilities:"
@@ -61,3 +62,13 @@ function tf() {
 
 complete -C /opt/local/bin/terraform tf
 complete -C /opt/local/bin/terraform terraform
+
+# nomad completion
+complete -C ${HOME}/bin/nomad nomad
+
+. ~/bin/task_darwin_arm64/completion/bash/task.bash
+
+export PATH="/usr/local/bin:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
