@@ -30,7 +30,6 @@ fi
 #	source /usr/local/share/gem_home/gem_home.sh
 #fi
 
-
 if [ -f $HOME/.bash_aliases ]; then
 	. $HOME/.bash_aliases
 fi
@@ -59,9 +58,8 @@ function tf() {
 # Add completion to terraform and my shell function shortcut
 # https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
 # use terraform -install-completion
-
-complete -C /opt/local/bin/terraform tf
-complete -C /opt/local/bin/terraform terraform
+#complete -C /opt/local/bin/terraform tf
+#complete -C /opt/local/bin/terraform terraform
 
 # nomad completion
 complete -C ${HOME}/bin/nomad nomad
