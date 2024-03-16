@@ -1,0 +1,10 @@
+Host *
+	# https://man.openbsd.org/ssh_config.5#AddKeysToAgent
+	AddKeysToAgent yes
+	# https://man.openbsd.org/ssh_config.5#ServerAliveInterval
+	ServerAliveInterval 10
+	# https://man.openbsd.org/ssh_config.5#ServerAliveCountMax
+	ServerAliveCountMax 2
+	# https://man.openbsd.org/ssh_config.5#UpdateHostKeys
+	# UpdateHostKeys ask
+	StrictHostKeyChecking false
