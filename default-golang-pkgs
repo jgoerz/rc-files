@@ -6,7 +6,7 @@
 golang.org/x/tools/gopls
 
 // https://go.googlesource.com/vscode-go/+/HEAD/docs/debugging.md
-github.com/go-delve/delve
+github.com/go-delve/delve/cmd/dlv
 
 // https://pkg.go.dev/github.com/golang/vscode-go/vscgo
 github.com/golang/vscode-go/vscgo
@@ -21,4 +21,4 @@ github.com/josharian/impl
 github.com/cweill/gotests/...
 
 // https://pkg.go.dev/honnef.co/go/tools/staticcheck
-honnef.co/go/tools/staticcheck
+honnef.co/go/tools/cmd/staticcheck
